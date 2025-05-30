@@ -6,6 +6,7 @@ import {
   PreTrainedModel,
   Processor,
 } from "@huggingface/transformers";
+import { setupOnnxRuntime } from "./onnx-setup";
 
 const MODEL_ID = "briaai/RMBG-1.4";
 
@@ -24,11 +25,16 @@ const state: ModelState = {
 // Initialize the model based on the selected model ID
 export async function initializeModel(): Promise<boolean> {
   try {
+    // Allow CORS for the model files
     env.allowLocalModels = false;
-    if (env.backends?.onnx?.wasm) {
-      env.backends.onnx.wasm.proxy = true;
-    }
-
+    
+    // Explicitly setup ONNX runtime
+    await setupOnnxRuntime();
+    
+    // Log available backends for debugging
+    console.log("Available backends:", env.backends);
+    
+    // Attempt to load the model
     state.model = await AutoModel.from_pretrained(MODEL_ID, {
       config: {
         model_type: "custom",
@@ -64,6 +70,12 @@ export async function initializeModel(): Promise<boolean> {
     return true;
   } catch (error) {
     console.error("Error initializing model:", error);
+    // Add more detailed error information
+    if (error instanceof Error) {
+      if (error.message.includes("no available backend found")) {
+        console.error("ONNX backend missing. Check that onnxruntime-web is properly loaded.");
+      }
+    }
     throw new Error(
       error instanceof Error
         ? error.message
