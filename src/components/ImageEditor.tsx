@@ -13,8 +13,8 @@ const ImageEditor: React.FC<ImageEditorProps> = ({
   onCancel 
 }) => {
   const [activeTab, setActiveTab] = useState<'solidColor' | 'image'>('solidColor');
-  const [selectedColor, setSelectedColor] = useState('#c0c0c0'); // Default light gray
-  const [customColor, setCustomColor] = useState('#c0c0c0');
+  const [selectedColor, setSelectedColor] = useState('#ffffff'); // Default white
+  const [customColor, setCustomColor] = useState('#ffffff');
   const [effect, setEffect] = useState<'none' | 'blur' | 'bright' | 'contrast'>('none');
   const [editedImage, setEditedImage] = useState<string | null>(null);
   
