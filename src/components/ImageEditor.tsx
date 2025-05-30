@@ -13,8 +13,8 @@ const ImageEditor: React.FC<ImageEditorProps> = ({
   onCancel 
 }) => {
   const [activeTab, setActiveTab] = useState<'solidColor' | 'image'>('solidColor');
-  const [selectedColor, setSelectedColor] = useState('#ff0000'); // Default red
-  const [customColor, setCustomColor] = useState('#ff0000');
+  const [selectedColor, setSelectedColor] = useState('#c0c0c0'); // Default light gray
+  const [customColor, setCustomColor] = useState('#c0c0c0');
   const [effect, setEffect] = useState<'none' | 'blur' | 'bright' | 'contrast'>('none');
   const [editedImage, setEditedImage] = useState<string | null>(null);
   
@@ -131,7 +131,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({
   
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-hidden">
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-4xl max-h-[90vh] overflow-auto">
         <div className="flex justify-between items-center p-4 border-b">
           <h2 className="text-xl font-semibold text-gray-800">Edit Image</h2>
           <button 
