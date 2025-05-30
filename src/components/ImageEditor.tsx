@@ -17,7 +17,7 @@ const ImageEditor: React.FC<ImageEditorProps> = ({
   const [customColor, setCustomColor] = useState('#ffffff');
   const [effect, setEffect] = useState<'none' | 'blur' | 'bright' | 'contrast'>('none');
   const [editedImage, setEditedImage] = useState<string | null>(null);
-  
+   
   const colors = [
     '#ffffff', // white
     '#000000', // black

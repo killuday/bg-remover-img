@@ -33,7 +33,7 @@ A fast and privacy-focused **image background remover** built with **React** and
 ```bash
 # Clone the repository
 https://github.com/killuday/bg-remover-img.git
-cd bg-remover
+cd bg-remover-img
 
 # Install dependencies
 npm install
