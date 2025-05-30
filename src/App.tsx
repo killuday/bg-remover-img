@@ -25,7 +25,11 @@ export default function App() {
     })();
   }, []);
 
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const initialized = await initializeModel();
+    if (!initialized) {
+      throw new Error("Failed to initialize background removal model");
+    }
     if (event.target.files && event.target.files[0]) {
       const newImage = {
         id: Date.now(),
