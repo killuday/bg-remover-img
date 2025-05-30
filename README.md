@@ -13,7 +13,7 @@ A fast and privacy-focused **image background remover** built with **React** and
 
 ## 📸 Live Demo
 
-[Add your deployment link here]
+(https://bg-remover-img.vercel.app/)
 
 ## 🛠️ Tech Stack
 
@@ -32,7 +32,7 @@ A fast and privacy-focused **image background remover** built with **React** and
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/bg-remover.git
+https://github.com/killuday/bg-remover-img.git
 cd bg-remover
 
 # Install dependencies
